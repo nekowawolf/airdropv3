@@ -1,11 +1,29 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Button } from "@/components/ui/MovingBorder";
 import HighlightText from "@/components/ui/HighlightText";
 import Header from "@/components/Header";
+import { fetchAirdropStats } from "@/services/airdropService";
 
 export default function HeroSection() {
+  const [airdropTotal, setAirdropTotal] = useState<number>(0);
+
+  useEffect(() => {
+    const loadStats = async () => {
+      try {
+        const stats = await fetchAirdropStats();
+        if (stats && typeof stats.total === 'number') {
+          setAirdropTotal(stats.total);
+        }
+      } catch (error) {
+        console.error('Error fetching airdrop stats:', error);
+      }
+    };
+    loadStats();
+  }, []);
+
   return (
     <>
       <Header />
@@ -15,14 +33,10 @@ export default function HeroSection() {
             <section className="text-center relative z-10">
 
               {/* BADGE */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-7 mx-auto">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500"></span>
-                </span>
-                <span className="text-xs sm:text-sm font-medium text-fill-color">
-                  67+ Live Airdrops
-                </span>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold tracking-widest uppercase mb-7 mx-auto">
+                <span className="absolute inline-flex h-2.5 w-2.5 rounded-full bg-blue-400 opacity-75 animate-ping" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-blue-500" />
+                <span>{airdropTotal}+ Live Airdrops</span>
               </div>
 
               {/* TITLE */}

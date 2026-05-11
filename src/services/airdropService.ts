@@ -6,6 +6,7 @@ const API_ENDPOINTS = {
     free: `${API_BASE_URL}/airdrop/freeairdrop`,
     paid: `${API_BASE_URL}/airdrop/paidairdrop`,
     all: `${API_BASE_URL}/airdrop/allairdrop`,
+    stats: `${API_BASE_URL}/airdrop/allairdrop/stats`,
 };
 
 const extractData = (data: any): any[] => {
@@ -129,6 +130,19 @@ export const fetchAirdropById = async (id: string): Promise<Airdrop | null> => {
         return null;
     } catch (error) {
         console.error('fetchAirdropById error:', error);
+        return null;
+    }
+};
+
+export const fetchAirdropStats = async (): Promise<{ total: number; active: number; ended: number } | null> => {
+    try {
+        const res = await fetch(API_ENDPOINTS.stats);
+        if (!res.ok) throw new Error('Failed to fetch airdrop stats');
+
+        const json = await res.json();
+        return json?.data ?? null;
+    } catch (error) {
+        console.error('fetchAirdropStats error:', error);
         return null;
     }
 };
