@@ -205,37 +205,45 @@ export default function AirdropsContent() {
                     <div className="text-red-500 text-center">{error}</div>
                 ) : (
                     <>
-                        {/* Project Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
-                            {displayedProjects.length > 0 ? (
-                                displayedProjects.map((project, index) => (
-                                    <Link
-                                        key={project.id || index}
-                                        href={`/airdrops/${project.id || ''}?tab=${activeTab.toLowerCase()}&page=${currentPage}`}
-                                        className="glass-card rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:bg-opacity-80 cursor-pointer group block"
-                                    >
-                                        <div className="mb-6 group-hover:scale-110 transition-transform">
-                                            {project.image_url ? (
-                                                <Image
-                                                    src={project.image_url}
-                                                    alt={project.name}
-                                                    width={64}
-                                                    height={64}
-                                                    className="w-16 h-16 object-contain mx-auto rounded-md"
-                                                />
-                                            ) : (
-                                                <div className="w-16 h-16 card-color rounded-md mx-auto flex items-center justify-center text-2xl">
-                                                    ?
-                                                </div>
-                                            )}
-                                        </div>
-                                        <h3 className="text-xl font-bold mb-1">{project.name}</h3>
-                                        <p className="text-sm text-fill-color/60">{project.task}</p>
-                                    </Link>
-                                ))
+                        <div className="w-full flex-col flex gap-4">
+                            {displayedProjects.length === 0 ? (
+                                <div className="text-center py-10">
+                                    <Image
+                                        src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"
+                                        alt="No data found"
+                                        width={176}
+                                        height={176}
+                                        className="mx-auto"
+                                    />
+                                    <p className="text-gray-500 mt-4">No data available.</p>
+                                </div>
                             ) : (
-                                <div className="col-span-full text-center text-fill-color/50 py-12">
-                                    No airdrops found.
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+                                    {displayedProjects.map((project, index) => (
+                                        <Link
+                                            key={project.id || index}
+                                            href={`/airdrops/${project.id || ''}?tab=${activeTab.toLowerCase()}&page=${currentPage}`}
+                                            className="glass-card rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:bg-opacity-80 cursor-pointer group block"
+                                        >
+                                            <div className="mb-6 group-hover:scale-110 transition-transform">
+                                                {project.image_url ? (
+                                                    <Image
+                                                        src={project.image_url}
+                                                        alt={project.name}
+                                                        width={64}
+                                                        height={64}
+                                                        className="w-16 h-16 object-contain mx-auto rounded-md"
+                                                    />
+                                                ) : (
+                                                    <div className="w-16 h-16 card-color rounded-md mx-auto flex items-center justify-center text-2xl">
+                                                        ?
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <h3 className="text-xl font-bold mb-1">{project.name}</h3>
+                                            <p className="text-sm text-fill-color/60">{project.task}</p>
+                                        </Link>
+                                    ))}
                                 </div>
                             )}
                         </div>
