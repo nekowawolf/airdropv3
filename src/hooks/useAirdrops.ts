@@ -11,9 +11,9 @@ export const useAirdrops = () => {
     const [paidAirdrops, setPaidAirdrops] = useState<Airdrop[]>([]);
     const [endedAirdrops, setEndedAirdrops] = useState<Airdrop[]>([]);
     
-    const [loadingFree, setLoadingFree] = useState(false);
-    const [loadingPaid, setLoadingPaid] = useState(false);
-    const [loadingEnded, setLoadingEnded] = useState(false);
+    const [loadingFree, setLoadingFree] = useState(true);
+    const [loadingPaid, setLoadingPaid] = useState(true);
+    const [loadingEnded, setLoadingEnded] = useState(true);
 
     const [error, setError] = useState<string | null>(null);
 
