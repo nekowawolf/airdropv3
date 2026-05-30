@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { FallbackImage } from '@/components/FallbackImage';
 import { useRouter, useSearchParams } from 'next/navigation';
 import PaginationTabs from '@/components/Pagination';
 import { Spinner } from "@/components/ui/spinner";
@@ -208,7 +208,7 @@ export default function AirdropsContent() {
                         <div className="w-full flex-col flex gap-4">
                             {displayedProjects.length === 0 ? (
                                 <div className="text-center py-10">
-                                    <Image
+                                    <FallbackImage
                                         src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"
                                         alt="No data found"
                                         width={176}
@@ -227,7 +227,7 @@ export default function AirdropsContent() {
                                         >
                                             <div className="mb-6 group-hover:scale-110 transition-transform">
                                                 {project.image_url ? (
-                                                    <Image
+                                                    <FallbackImage
                                                         src={project.image_url}
                                                         alt={project.name}
                                                         width={64}

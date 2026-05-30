@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { FallbackImage } from '@/components/FallbackImage';
 import { useParams, useRouter } from 'next/navigation';
 import { fetchAirdropById } from '@/services/airdropService';
 import { Airdrop } from '@/types/airdrop';
@@ -71,7 +71,7 @@ export default function AirdropDetail() {
                     {/* Header Section */}
                     <div className="glass-card rounded-3xl p-8 mb-8 border border-white/10 relative overflow-hidden">
                         <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-                            <Image
+                            <FallbackImage
                                 src={airdrop.image_url}
                                 alt=""
                                 width={256}
@@ -81,7 +81,7 @@ export default function AirdropDetail() {
                         </div>
 
                         <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start">
-                            <Image
+                            <FallbackImage
                                 src={airdrop.image_url}
                                 alt={airdrop.name}
                                 width={128}
