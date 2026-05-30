@@ -3,10 +3,10 @@ import { Airdrop } from '@/types/airdrop';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const API_ENDPOINTS = {
-    free: `${API_BASE_URL}/airdrop/freeairdrop`,
-    paid: `${API_BASE_URL}/airdrop/paidairdrop`,
-    all: `${API_BASE_URL}/airdrop/allairdrop`,
-    stats: `${API_BASE_URL}/airdrop/allairdrop/stats`,
+    free: `${API_BASE_URL}/freeairdrop`,
+    paid: `${API_BASE_URL}/paidairdrop`,
+    all: `${API_BASE_URL}/allairdrop`,
+    stats: `${API_BASE_URL}/allairdrop/stats`,
 };
 
 const extractData = (data: any): any[] => {
