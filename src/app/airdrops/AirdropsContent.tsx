@@ -22,9 +22,8 @@ export default function AirdropsContent() {
 
     const {
         freeAirdrops, paidAirdrops, endedAirdrops,
-        loadingFree, loadingPaid, loadingEnded,
-        error,
-        getFree, getPaid, getEnded
+        loading,
+        error
     } = useAirdrops();
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -33,34 +32,8 @@ export default function AirdropsContent() {
     const ITEMS_PER_PAGE = 8;
 
     useEffect(() => {
-        if (activeTab === 'Free') {
-            getFree();
-        } else if (activeTab === 'Paid') {
-            getPaid();
-        } else if (activeTab === 'Ended') {
-            getEnded();
-        }
         setFilters({});
-    }, [activeTab, getFree, getPaid, getEnded]);
-
-    useEffect(() => {
-        const prefetchOthers = async () => {
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            if (activeTab === 'Free') {
-                getPaid();
-                getEnded();
-            } else if (activeTab === 'Paid') {
-                getFree();
-                getEnded();
-            } else if (activeTab === 'Ended') {
-                getFree();
-                getPaid();
-            }
-        };
-
-        prefetchOthers();
-    }, [activeTab, getFree, getPaid, getEnded]);
+    }, [activeTab]);
 
     useEffect(() => {
         const page = searchParams.get('page');
@@ -72,17 +45,14 @@ export default function AirdropsContent() {
     }, [searchParams]);
 
     let currentData: Airdrop[] = [];
-    let isLoading = false;
+    let isLoading = loading;
 
     if (activeTab === 'Free') {
         currentData = freeAirdrops;
-        isLoading = loadingFree;
     } else if (activeTab === 'Paid') {
         currentData = paidAirdrops;
-        isLoading = loadingPaid;
     } else if (activeTab === 'Ended') {
         currentData = endedAirdrops;
-        isLoading = loadingEnded;
     }
 
     const filteredProjects = currentData.filter((project) => {
