@@ -36,31 +36,34 @@ export default function Footer() {
                     </p>
 
                     <div className="order-1 md:order-2 flex space-x-6 mt-4 md:mt-0">
-
                         <a
-                            href="#features"
-                            onClick={(e) => handleScroll(e, 'features')}
-                            className="text-fill-color/60 hover:text-fill-color transition-colors"
+                            href="https://cc.nekowawolf.xyz/"
+                            target="_blank"
+                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
                         >
-                            Features
+                            Community
                         </a>
-
                         <a
-                            href="#heatmap"
-                            onClick={(e) => handleScroll(e, 'heatmap')}
-                            className="text-fill-color/60 hover:text-fill-color transition-colors"
+                            href="https://web3.nekowawolf.xyz/"
+                            target="_blank"
+                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
                         >
-                            Heatmap
+                            Web3 Tools
                         </a>
-
                         <a
-                            href="#alpha"
-                            onClick={(e) => handleScroll(e, 'alpha')}
-                            className="text-fill-color/60 hover:text-fill-color transition-colors"
+                            href="https://ai.nekowawolf.xyz/"
+                            target="_blank"
+                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
                         >
-                            Alpha
+                            AI Tools
                         </a>
-
+                        <a
+                            href="https://github.nekowawolf.xyz/"
+                            target="_blank"
+                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                        >
+                            GitHub Repos
+                        </a>
                     </div>
 
                 </div>

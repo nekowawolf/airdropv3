@@ -95,19 +95,19 @@ export default function Header() {
             <nav className="hidden sm:flex items-center gap-6">
               <Link
                 href="/airdrops"
-                className="text-fill-color/70 font-semibold hover:opacity-80"
+                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
               >
                 Airdrops
               </Link>
               <Link
                 href="https://cc.nekowawolf.xyz/" target="_blank"
-                className="text-fill-color/70 font-semibold hover:opacity-80"
+                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
               >
                 Community
               </Link>
               <Link
                 href="https://web3.nekowawolf.xyz/" target="_blank"
-                className="text-fill-color/70 font-semibold hover:opacity-80"
+                className="text-fill-color/70 font-semibold hover:!text-blue-600 transition-colors duration-300"
               >
                 Web3 Tools
               </Link>
@@ -164,21 +164,21 @@ export default function Header() {
             <Link
               href="/airdrops"
               onClick={() => setIsMenuOpen(false)}
-              className="block font-semibold text-fill-color/70"
+              className="block font-semibold text-fill-color/70 hover:!text-blue-600 transition-colors duration-300"
             >
               Airdrops
             </Link>
             <Link
               href="https://cc.nekowawolf.xyz/" target="_blank"
               onClick={() => setIsMenuOpen(false)}
-              className="block font-semibold text-fill-color/70"
+              className="block font-semibold text-fill-color/70 hover:!text-blue-600 transition-colors duration-300"
             >
               Community
             </Link>
              <Link
               href="https://web3.nekowawolf.xyz/" target="_blank"
               onClick={() => setIsMenuOpen(false)}
-              className="block font-semibold text-fill-color/70"
+              className="block font-semibold text-fill-color/70 hover:!text-blue-600 transition-colors duration-300"
             >
               Web3 Tools
             </Link>
