@@ -67,10 +67,10 @@ export default function Footer() {
             >
                     {/* Layer 1: Default text */}
                     <div className="flex justify-center items-center select-none pointer-events-none">
-                        <h3 className="text-[12vw] font-black text-fill-color opacity-10 mx-2 tracking-tighter">
+                        <h3 className="text-[10vw] font-black text-fill-color opacity-10 mx-2 tracking-tighter">
                             NWW
                         </h3>
-                        <h3 className="text-[12vw] font-black text-fill-color opacity-10 mx-2 tracking-tighter">
+                        <h3 className="text-[10vw] font-black text-fill-color opacity-10 mx-2 tracking-tighter">
                             AIRDROP
                         </h3>
                     </div>
@@ -86,10 +86,10 @@ export default function Footer() {
                             WebkitMaskImage: brightMask,
                         }}
                     >
-                        <motion.h3 className="text-[12vw] font-black text-blue-600 mx-2 tracking-tighter">
+                        <motion.h3 className="text-[10vw] font-black text-blue-600 mx-2 tracking-tighter">
                             NWW
                         </motion.h3>
-                        <motion.h3 className="text-[12vw] font-black text-blue-600 mx-2 tracking-tighter">
+                        <motion.h3 className="text-[10vw] font-black text-blue-600 mx-2 tracking-tighter">
                             AIRDROP
                         </motion.h3>
                     </motion.div>
@@ -105,56 +105,58 @@ export default function Footer() {
                             WebkitMaskImage: glowMask,
                         }}
                     >
-                        <motion.h3 className="text-[12vw] font-black text-blue-500 mx-2 tracking-tighter blur-[12px]">
+                        <motion.h3 className="text-[10vw] font-black text-blue-500 mx-2 tracking-tighter blur-[12px]">
                             NWW
                         </motion.h3>
-                        <motion.h3 className="text-[12vw] font-black text-blue-500 mx-2 tracking-tighter blur-[12px]">
+                        <motion.h3 className="text-[10vw] font-black text-blue-500 mx-2 tracking-tighter blur-[12px]">
                             AIRDROP
                         </motion.h3>
                     </motion.div>
             </div>
 
             <div className="max-w-7xl mx-auto px-4">
-                {/* Links and Copyright */}
-                <div className="mt-4 flex flex-col md:flex-row justify-between items-center text-sm text-fill-color/60 border-t border-white/5 pt-8">
+            {/* Links and Copyright */}
+            <div className="mt-4 flex flex-col md:flex-row justify-between items-center text-sm text-fill-color/60 border-t border-white/5 pt-8">
 
-                    <p className="order-2 md:order-1 mt-8 md:mt-0 text-center md:text-left">
-                        &copy; Nww Airdrop, 2026.
-                    </p>
+                {/* Copyright */}
+                <p className="order-2 md:order-1 mt-6 md:mt-0 text-center md:text-left">
+                    &copy; Nww Airdrop, 2026.
+                </p>
 
-                    <div className="order-1 md:order-2 flex space-x-6 mt-4 md:mt-0">
-                        <a
-                            href="https://cc.nekowawolf.xyz/"
-                            target="_blank"
-                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
-                        >
-                            Community
-                        </a>
-                        <a
-                            href="https://web3.nekowawolf.xyz/"
-                            target="_blank"
-                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
-                        >
-                            Web3 Tools
-                        </a>
-                        <a
-                            href="https://ai.nekowawolf.xyz/"
-                            target="_blank"
-                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
-                        >
-                            AI Tools
-                        </a>
-                        <a
-                            href="https://github.nekowawolf.xyz/"
-                            target="_blank"
-                            className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
-                        >
-                            GitHub Repos
-                        </a>
-                    </div>
-
+                {/* Links */}
+                <div className="order-1 md:order-2 flex flex-wrap justify-center gap-x-6 gap-y-3 md:space-x-6 md:gap-y-0 mt-0">
+                    <a
+                        href="https://cc.nekowawolf.xyz/"
+                        target="_blank"
+                        className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                    >
+                        Community
+                    </a>
+                    <a
+                        href="https://web3.nekowawolf.xyz/"
+                        target="_blank"
+                        className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                    >
+                        Web3 Tools
+                    </a>
+                    <a
+                        href="https://ai.nekowawolf.xyz/"
+                        target="_blank"
+                        className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300"
+                    >
+                        AI Tools
+                    </a>
+                    <a
+                        href="https://github.nekowawolf.xyz/"
+                        target="_blank"
+                        className="text-fill-color/60 hover:!text-blue-600 transition-colors duration-300 w-full text-center md:w-auto md:text-left"
+                    >
+                        GitHub Repos
+                    </a>
                 </div>
+
             </div>
+        </div>
         </footer>
     );
 }
