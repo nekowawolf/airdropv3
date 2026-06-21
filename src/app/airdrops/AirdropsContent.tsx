@@ -95,7 +95,7 @@ export default function AirdropsContent() {
             return;
         }
         handlePageChange(1);
-    }, [searchQuery, filters]);
+    }, [searchQuery, JSON.stringify(filters)]);
 
     const handleTabChange = (tab: string) => {
         const params = new URLSearchParams(searchParams.toString());
