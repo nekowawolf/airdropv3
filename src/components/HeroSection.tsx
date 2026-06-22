@@ -55,7 +55,7 @@ export default function HeroSection() {
               <div className="flex justify-center">
                 <Button
                   as={Link}
-                  href="/airdrops"
+                  href="/directory"
                   className="h-12 px-7 text-base bg-gradient-to-r from-blue-500 text-white font-semibold rounded-xl hover:from-blue-600 transition-all transform hover:scale-105"
                   containerClassName="w-auto h-auto"
                 >

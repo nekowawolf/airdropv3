@@ -192,7 +192,7 @@ export default function AirdropsContent() {
                                     {displayedProjects.map((project, index) => (
                                         <Link
                                             key={project.id || index}
-                                            href={`/airdrops/${project.id || ''}?tab=${activeTab.toLowerCase()}&page=${currentPage}`}
+                                            href={`/directory/${project.id || ''}?tab=${activeTab.toLowerCase()}&page=${currentPage}`}
                                             className="glass-card rounded-2xl p-8 flex flex-col items-center justify-center text-center hover:bg-opacity-80 cursor-pointer group block"
                                         >
                                             <div className="mb-6 group-hover:scale-110 transition-transform">

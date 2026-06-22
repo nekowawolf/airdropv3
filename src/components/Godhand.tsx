@@ -16,7 +16,7 @@ export default function GodhandSection() {
                 className="theme-icon-moon object-cover w-full h-full"
             />
 
-            <Link href="/airdrops" className="absolute flex flex-col items-center sm:mr-14 mr-7">
+            <Link href="/directory" className="absolute flex flex-col items-center sm:mr-14 mr-7">
                 <img
                     src="https://nekowawolf.github.io/cdn-images/images/2026/1781829491_folder.png"
                     alt="Folder"
