@@ -141,13 +141,13 @@ export default function AirdropsContent() {
 
                 {/* Filter Tabs & Dropdown */}
                 <div className="mb-12 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto px-4 sm:px-0">
-                    <div className="p-1 card-color rounded-full flex sm:inline-flex border border-color/30 w-full sm:w-auto relative">
+                    <div className="p-1 card-color rounded-full flex sm:inline-flex border border-color w-full sm:w-auto relative">
                         {['Free', 'Paid', 'Ended'].map((tab) => (
                             <button
                                 key={tab}
                                 onClick={() => handleTabChange(tab)}
                                 className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-full text-sm font-medium transition-all ${activeTab === tab
-                                    ? 'bg-blue-400/80 text-fill-color shadow-lg'
+                                    ? 'bg-blue-600 text-white shadow-lg'
                                     : 'text-fill-color/60 hover:text-fill-color'
                                     }`}
                             >
@@ -211,7 +211,7 @@ export default function AirdropsContent() {
                                                 )}
                                             </div>
                                             <h3 className="text-xl font-bold mb-1">{project.name}</h3>
-                                            <p className="text-sm text-fill-color/60">{project.task}</p>
+                                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">{project.task}</span>
                                         </Link>
                                     ))}
                                 </div>

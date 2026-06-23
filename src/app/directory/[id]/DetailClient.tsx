@@ -91,7 +91,7 @@ export default function AirdropDetail() {
                             <div className="flex-1">
                                 <h1 className="text-3xl md:text-4xl font-bold mb-2">{airdrop.name}</h1>
                                 <div className="flex flex-wrap gap-3 mb-4">
-                                    <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-sm border border-blue-500/20">
+                                    <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm border border-blue-500/20">
                                         {airdrop.task}
                                     </span>
                                     {airdrop.status && (

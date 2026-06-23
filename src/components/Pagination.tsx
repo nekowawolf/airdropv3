@@ -52,7 +52,7 @@ export default function PaginationTabs({
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
-            className={`border border-color/30 text-fill-color hover:bg-white/5 hover:text-fill-color cursor-pointer ${currentPage === 1 ? "opacity-50 pointer-events-none" : ""
+            className={`border border-color text-fill-color hover:bg-white/5 hover:text-fill-color cursor-pointer ${currentPage === 1 ? "opacity-50 pointer-events-none" : ""
               }`}
             onClick={handlePrevious}
             href="#"
@@ -74,8 +74,8 @@ export default function PaginationTabs({
             <PaginationItem key={pageNum}>
               <PaginationLink
                 className={cn(
-                  "cursor-pointer border border-color/30 text-fill-color hover:bg-white/5 hover:text-fill-color/80 transition-colors",
-                  isActive && "bg-blue-400/80 text-fill-color hover:bg-blue-500"
+                  "cursor-pointer border border-color text-fill-color hover:bg-white/5 hover:text-fill-color/80 transition-colors",
+                  isActive && "bg-blue-600 hover:bg-blue-700"
                 )}
                 isActive={isActive}
                 onClick={(e) => {
@@ -92,7 +92,7 @@ export default function PaginationTabs({
 
         <PaginationItem>
           <PaginationNext
-            className={`border border-color/30 text-fill-color hover:bg-white/5 hover:text-fill-color cursor-pointer ${currentPage === totalPages ? "opacity-50 pointer-events-none" : ""
+            className={`border border-color text-fill-color hover:bg-white/5 hover:text-fill-color cursor-pointer ${currentPage === totalPages ? "opacity-50 pointer-events-none" : ""
               }`}
             onClick={handleNext}
             href="#"
