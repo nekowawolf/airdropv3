@@ -51,6 +51,8 @@ export default function FilterDropdown({
     };
 
     const isChanged = JSON.stringify(tempFilters) !== JSON.stringify(filters);
+    const hasActiveFilters = Object.keys(filters).some(key => filters[key as keyof FilterOptions] && filters[key as keyof FilterOptions]!.length > 0);
+    const isFilterActive = isOpen || hasActiveFilters;
 
     const applyFilters = () => {
         setFilters(tempFilters);
@@ -138,11 +140,13 @@ export default function FilterDropdown({
                 onClick={() => setIsOpen(!isOpen)}
                 className={`
             flex items-center justify-center gap-2 px-4 py-2 rounded-full text-sm font-medium
-            border border-color transition-colors
-            ${isOpen ? 'bg-blue-500/20 text-fill-color focus:border-blue-500' : 'card-color text-fill-color/80 hover:text-fill-color focus:border-blue-500'}
+            border transition-all duration-300 cursor-pointer
+            ${isFilterActive 
+                ? 'text-fill-color bg-blue-500/30 border-blue-600' 
+                : 'card-color text-fill-color/80 border-color hover:text-fill-color hover:!border-blue-600'}
         `}
             >
-                <FiFilter className={`w-4 h-4 ${isOpen ? 'text-blue-400' : ''}`} />
+                <FiFilter className={`w-4 h-4 ${isFilterActive ? 'text-fill-color' : ''}`} />
                 <span>Filter</span>
                 <FiChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
             </button>
@@ -160,14 +164,14 @@ export default function FilterDropdown({
                     <div className="p-3 flex gap-2">
                         <button
                             onClick={clearAndClose}
-                            className="flex-1 px-3 py-2 rounded-lg text-xs font-medium text-fill-color/70 hover:bg-white/5 hover:text-fill-color transition-colors"
+                            className="cursor-pointer flex-1 px-3 py-2 rounded-lg text-xs font-medium text-fill-color/70 hover:bg-white/5 hover:text-fill-color transition-colors"
                             disabled={Object.keys(filters).every(k => !filters[k as keyof FilterOptions] || filters[k as keyof FilterOptions]?.length === 0) && JSON.stringify(tempFilters) === JSON.stringify(filters)}
                         >
                             Clear
                         </button>
                         <button
                             onClick={applyFilters}
-                            className="flex-1 px-3 py-2 rounded-lg text-xs font-medium bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/20 transition-all"
+                            className="cursor-pointer flex-1 px-3 py-2 rounded-lg text-xs font-medium bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-500/20 transition-all"
                         >
                             Apply
                         </button>
@@ -183,7 +187,7 @@ function Checkbox({ label, checked, onChange }: { label: string | React.ReactNod
         <label className="flex items-center gap-3 cursor-pointer group select-none">
             <div className={`
                 w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-200
-                ${checked ? 'bg-blue-500 border-blue-500 text-white' : 'border-color group-hover:border-blue-400/50 bg-white/5'}
+                ${checked ? 'bg-blue-500 border-blue-500 text-white' : 'border-color group-hover:!border-blue-600 bg-white/5'}
             `}>
                 {checked && <FiCheck className="w-3.5 h-3.5" />}
             </div>

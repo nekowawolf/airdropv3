@@ -47,7 +47,7 @@ export default function AirdropDetail() {
                     <p className="mb-4">Airdrop not found.</p>
                     <button
                         onClick={() => router.back()}
-                        className="px-4 py-2 rounded-full border border-color/30 hover:bg-white/5 transition-colors"
+                        className="px-4 py-2 rounded-full border border-color/30 hover:bg-white/5 transition-colors cursor-pointer"
                     >
                         Go Back
                     </button>

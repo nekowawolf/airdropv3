@@ -71,6 +71,11 @@ body {
   color: var(--fill-color);
 }
 
+.hover\:text-fill-color:hover,
+.group:hover .group-hover\:text-fill-color {
+  color: var(--fill-color) !important;
+}
+
 .text-fill-color\/60 {
   color: rgba(var(--fill-color-rgb), 0.6);
 }

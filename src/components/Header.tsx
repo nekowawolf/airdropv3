@@ -80,7 +80,7 @@ export default function Header() {
         >
           <div className="h-full px-6 sm:px-8 flex items-center justify-between">
             {/* LEFT */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="cursor-pointer flex items-center gap-2">
             <img
               src="https://nekowawolf.github.io/cdn-images/images/2026/1768368937_logo.jpg"
               alt="Logo"
@@ -147,7 +147,7 @@ export default function Header() {
               <button
                 aria-label="Toggle menu"
                 onClick={() => setIsMenuOpen((v) => !v)}
-                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center text-lg sm:hidden"
+                className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center text-lg sm:hidden cursor-pointer"
               >
                 {isMenuOpen ? <HiOutlineX size={22} /> : <FaBars />}
               </button>
