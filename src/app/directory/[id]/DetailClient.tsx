@@ -44,12 +44,19 @@ export default function AirdropDetail() {
         return (
             <>
                 <div className="min-h-screen body-color flex flex-col items-center justify-center text-fill-color">
-                    <p className="mb-4">Airdrop not found.</p>
+                    <FallbackImage
+                        src="https://nekowawolf.github.io/cdn-images/images/2026/1771661079_pixchan.png"
+                        alt="Airdrop Not Found"
+                        width={176}
+                        height={176}
+                        className="mx-auto mb-2"
+                    />
+                    <h1 className="text-lg font-bold mb-6 text-fill-color/50">Airdrop Not Found</h1>
                     <button
                         onClick={() => router.back()}
-                        className="px-4 py-2 rounded-full border border-color/30 hover:bg-white/5 transition-colors cursor-pointer"
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20 cursor-pointer"
                     >
-                        Go Back
+                        Back to Airdrops
                     </button>
                 </div>
             </>
