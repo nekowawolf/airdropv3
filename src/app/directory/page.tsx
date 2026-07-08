@@ -2,10 +2,10 @@ import { Suspense } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AirdropsContent from './AirdropsContent';
-import { dashboardMetadata } from '@/constants/metadataTemplates';
+import { airdropMetadata } from '@/constants/metadataTemplates';
 import { Spinner } from "@/components/ui/spinner";
 
-export const metadata = dashboardMetadata('Airdrops', 'Explore ongoing and completed airdrops.');
+export const metadata = airdropMetadata('Airdrops', 'Explore ongoing and completed airdrops.');
 
 export default function AirdropsPage() {
     return (
