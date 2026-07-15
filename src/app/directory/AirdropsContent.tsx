@@ -1,5 +1,6 @@
 'use client';
 
+import NwwOneeAIChat from "@/components/NwwOneeAIChat";
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { FallbackImage } from '@/components/FallbackImage';
@@ -239,6 +240,7 @@ export default function AirdropsContent() {
                     </>
                 )}
             </div>
+            <NwwOneeAIChat />
         </div>
     );
 }

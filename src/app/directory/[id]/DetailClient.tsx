@@ -7,6 +7,7 @@ import { fetchAirdropById } from '@/services/airdropService';
 import { Airdrop } from '@/types/airdrop';
 import { Spinner } from "@/components/ui/spinner";
 import { ArrowLeft, ExternalLink, Globe, Award } from 'lucide-react';
+import NwwOneeAIChat from "@/components/NwwOneeAIChat";
 
 export default function AirdropDetail() {
     const { id } = useParams();
@@ -230,6 +231,7 @@ export default function AirdropDetail() {
                     </div>
                 </div>
             </div>
+            <NwwOneeAIChat />
         </>
     );
 }
