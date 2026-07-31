@@ -7,7 +7,8 @@ import { fetchAirdropById } from '@/services/airdropService';
 import { Airdrop } from '@/types/airdrop';
 import { Spinner } from "@/components/ui/spinner";
 import { ArrowLeft, ExternalLink, Globe, Award } from 'lucide-react';
-import NwwOneeAIChat from "@/components/NwwOneeAIChat";
+import NwwOneeAIChat, { chatStore } from "@/components/NwwOneeAIChat";
+import { CiBookmark } from "react-icons/ci";
 
 export default function AirdropDetail() {
     const { id } = useParams();
@@ -66,7 +67,7 @@ export default function AirdropDetail() {
 
     return (
         <>
-            <div className="min-h-screen body-color text-fill-color p-8 pt-28 font-sans flex flex-col items-center">
+            <div className="flex-grow pt-36 pb-12 min-h-screen body-color text-fill-color px-4 sm:px-8 font-sans flex flex-col items-center">
                 <div className="max-w-4xl w-full">
                     <button
                         onClick={() => router.back()}
@@ -77,7 +78,17 @@ export default function AirdropDetail() {
                     </button>
 
                     {/* Header Section */}
-                    <div className="glass-card rounded-3xl p-8 mb-8 border border-white/10 relative overflow-hidden">
+                    <div className="glass-card rounded-3xl p-7 mb-8 border border-white/10 relative overflow-hidden">
+                        <button 
+                            onClick={() => {
+                                chatStore.setIsOpen(true);
+                                chatStore.setActiveView('user');
+                            }}
+                            className="absolute top-6 right-6 z-20 cursor-pointer opacity-70 hover:opacity-100 transition-all text-fill-color"
+                            title="Bookmark"
+                        >
+                            <CiBookmark className="w-6 h-6" />
+                        </button>
                         <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
                             <FallbackImage
                                 src={airdrop.image_url}
@@ -88,16 +99,18 @@ export default function AirdropDetail() {
                             />
                         </div>
 
-                        <div className="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+                        <div className="relative z-10 flex flex-col md:flex-row gap-6 items-start">
                             <FallbackImage
                                 src={airdrop.image_url}
                                 alt={airdrop.name}
-                                width={128}
-                                height={128}
-                                className="w-24 h-24 md:w-32 md:h-32 rounded-2xl object-contain bg-black/20 p-2"
+                                width={112}
+                                height={112}
+                                className="w-28 h-28 md:w-28 md:h-28 rounded-2xl object-contain bg-black/20 p-2"
                             />
                             <div className="flex-1">
-                                <h1 className="text-3xl md:text-4xl font-bold mb-2">{airdrop.name}</h1>
+                                <h1 className="text-3xl md:text-3xl font-bold mb-2">
+                                    {airdrop.name}
+                                </h1>
                                 <div className="flex flex-wrap gap-3 mb-4">
                                     <span className="px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm border border-blue-500/20">
                                         {airdrop.task}
@@ -163,10 +176,10 @@ export default function AirdropDetail() {
                                         href={airdrop.link}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between p-3 rounded-xl card-color card-hover group"
+                                        className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
                                     >
-                                        <span className="font-medium">Website</span>
                                         <Globe size={16} className="text-fill-color/40 group-hover:text-fill-color" />
+                                        <span className="font-medium">Website</span>
                                     </a>
                                 )}
                                 {airdrop.link_guide && (
@@ -174,10 +187,10 @@ export default function AirdropDetail() {
                                         href={airdrop.link_guide}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between p-3 rounded-xl card-color card-hover group"
+                                        className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
                                     >
-                                        <span className="font-medium">Step-by-Step Guide</span>
                                         <ExternalLink size={16} className="text-fill-color/40 group-hover:text-fill-color" />
+                                        <span className="font-medium">Step-by-Step Guide</span>
                                     </a>
                                 )}
                                 {airdrop.status === 'ended' && airdrop.link_claim && (
@@ -185,12 +198,12 @@ export default function AirdropDetail() {
                                         href={airdrop.link_claim}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between p-3 rounded-xl card-color card-hover group"
+                                        className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
                                     >
+                                        <ExternalLink size={16} className="text-fill-color/40 group-hover:text-fill-color" />
                                         <span className="font-medium">
                                             Claim Airdrop
                                         </span>
-                                        <ExternalLink size={16} className="text-fill-color/40 group-hover:text-fill-color" />
                                     </a>
                                 )}
                                 {airdrop.link_twitter && (
@@ -198,10 +211,10 @@ export default function AirdropDetail() {
                                         href={airdrop.link_twitter}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between p-3 rounded-xl card-color card-hover group"
+                                        className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
                                     >
-                                        <span className="font-medium">Twitter</span>
                                         <ExternalLink size={16} className="text-fill-color/40 group-hover:text-fill-color" />
+                                        <span className="font-medium">Twitter</span>
                                     </a>
                                 )}
                                 {airdrop.link_discord && (
@@ -209,10 +222,10 @@ export default function AirdropDetail() {
                                         href={airdrop.link_discord}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between p-3 rounded-xl card-color card-hover group"
+                                        className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
                                     >
-                                        <span className="font-medium">Discord</span>
                                         <ExternalLink size={16} className="text-fill-color/40 group-hover:text-fill-color" />
+                                        <span className="font-medium">Discord</span>
                                     </a>
                                 )}
                                 {airdrop.link_telegram && (
@@ -220,10 +233,10 @@ export default function AirdropDetail() {
                                         href={airdrop.link_telegram}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center justify-between p-3 rounded-xl card-color card-hover group"
+                                        className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
                                     >
-                                        <span className="font-medium">Telegram</span>
                                         <ExternalLink size={16} className="text-fill-color/40 group-hover:text-fill-color" />
+                                        <span className="font-medium">Telegram</span>
                                     </a>
                                 )}
                             </div>
