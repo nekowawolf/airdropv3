@@ -3,10 +3,8 @@ import { Airdrop } from '@/types/airdrop';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const API_ENDPOINTS = {
-    free: `${API_BASE_URL}/freeairdrop`,
-    paid: `${API_BASE_URL}/paidairdrop`,
-    all: `${API_BASE_URL}/allairdrop`,
-    stats: `${API_BASE_URL}/allairdrop/stats`,
+    airdrops: `${API_BASE_URL}/airdrops`,
+    stats: `${API_BASE_URL}/airdrops/stats`,
 };
 
 const extractData = (data: any): any[] => {
@@ -39,7 +37,7 @@ const sortEndedByEndedAtDesc = (items: any[]) =>
 
 export const fetchFreeAirdrops = async (): Promise<Airdrop[]> => {
     try {
-        const res = await fetch(API_ENDPOINTS.free);
+        const res = await fetch(`${API_ENDPOINTS.airdrops}?is_paid=false`);
         if (!res.ok) throw new Error('Failed to fetch free airdrops');
 
         const items = extractData(await res.json());
@@ -49,6 +47,7 @@ export const fetchFreeAirdrops = async (): Promise<Airdrop[]> => {
                 .filter((item: any) => item.status === 'active')
                 .map((item: any) => ({
                     ...item,
+                    id: item._id || item.id,
                     type: 'Free',
                 }))
         );
@@ -60,7 +59,7 @@ export const fetchFreeAirdrops = async (): Promise<Airdrop[]> => {
 
 export const fetchPaidAirdrops = async (): Promise<Airdrop[]> => {
     try {
-        const res = await fetch(API_ENDPOINTS.paid);
+        const res = await fetch(`${API_ENDPOINTS.airdrops}?is_paid=true`);
         if (!res.ok) throw new Error('Failed to fetch paid airdrops');
 
         const items = extractData(await res.json());
@@ -70,6 +69,7 @@ export const fetchPaidAirdrops = async (): Promise<Airdrop[]> => {
                 .filter((item: any) => item.status === 'active')
                 .map((item: any) => ({
                     ...item,
+                    id: item._id || item.id,
                     type: 'Paid',
                 }))
         );
@@ -81,7 +81,7 @@ export const fetchPaidAirdrops = async (): Promise<Airdrop[]> => {
 
 export const fetchEndedAirdrops = async (): Promise<Airdrop[]> => {
     try {
-        const res = await fetch(API_ENDPOINTS.all);
+        const res = await fetch(API_ENDPOINTS.airdrops);
         if (!res.ok) throw new Error('Failed to fetch ended airdrops');
 
         const items = extractData(await res.json());
@@ -91,6 +91,7 @@ export const fetchEndedAirdrops = async (): Promise<Airdrop[]> => {
                 .filter((item: any) => item.status === 'ended')
                 .map((item: any) => ({
                     ...item,
+                    id: item._id || item.id,
                     type: 'Ended',
                 }))
         );
@@ -102,31 +103,19 @@ export const fetchEndedAirdrops = async (): Promise<Airdrop[]> => {
 
 export const fetchAirdropById = async (id: string): Promise<Airdrop | null> => {
     try {
-        const res = await fetch(API_ENDPOINTS.all);
+        const res = await fetch(API_ENDPOINTS.airdrops);
         if (!res.ok) throw new Error('Failed to fetch airdrops for detail');
 
         const items = extractData(await res.json());
         const found = items.find((item: any) => item.id === id || item._id === id);
 
-        if (found) return found;
-
-        const [freeRes, paidRes] = await Promise.all([
-            fetch(API_ENDPOINTS.free),
-            fetch(API_ENDPOINTS.paid)
-        ]);
-
-        if (freeRes.ok) {
-            const freeItems = extractData(await freeRes.json());
-            const freeFound = freeItems.find((item: any) => item.id === id || item._id === id);
-            if (freeFound) return freeFound;
+        if (found) {
+             let type = 'Free';
+             if (found.status === 'ended') type = 'Ended';
+             else if (found.is_paid) type = 'Paid';
+             return { ...found, id: found._id || found.id, type };
         }
-
-        if (paidRes.ok) {
-            const paidItems = extractData(await paidRes.json());
-            const paidFound = paidItems.find((item: any) => item.id === id || item._id === id);
-            if (paidFound) return paidFound;
-        }
-
+        
         return null;
     } catch (error) {
         console.error('fetchAirdropById error:', error);

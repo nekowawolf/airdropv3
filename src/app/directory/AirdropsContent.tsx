@@ -88,7 +88,7 @@ function AirdropsContentInner() {
         }
 
         if (filters.vesting && filters.vesting.length > 0) {
-            const pVesting = normalize(project.vesting);
+            const pVesting = project.is_vesting ? 'yes' : 'no';
             if (!filters.vesting.includes(pVesting)) return false;
         }
 

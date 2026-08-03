@@ -171,9 +171,9 @@ export default function AirdropDetail() {
                                 Official Links
                             </h3>
                             <div className="space-y-3">
-                                {airdrop.link && (
+                                {airdrop.website && (
                                     <a
-                                        href={airdrop.link}
+                                        href={airdrop.website}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
@@ -182,9 +182,9 @@ export default function AirdropDetail() {
                                         <span className="font-medium">Website</span>
                                     </a>
                                 )}
-                                {airdrop.link_guide && (
+                                {airdrop.guide_url && (
                                     <a
-                                        href={airdrop.link_guide}
+                                        href={airdrop.guide_url}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
@@ -193,9 +193,9 @@ export default function AirdropDetail() {
                                         <span className="font-medium">Step-by-Step Guide</span>
                                     </a>
                                 )}
-                                {airdrop.status === 'ended' && airdrop.link_claim && (
+                                {airdrop.status === 'ended' && airdrop.claim_url && (
                                     <a
-                                        href={airdrop.link_claim}
+                                        href={airdrop.claim_url}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
@@ -206,9 +206,9 @@ export default function AirdropDetail() {
                                         </span>
                                     </a>
                                 )}
-                                {airdrop.link_twitter && (
+                                {airdrop.twitter && (
                                     <a
-                                        href={airdrop.link_twitter}
+                                        href={airdrop.twitter}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
@@ -217,9 +217,9 @@ export default function AirdropDetail() {
                                         <span className="font-medium">Twitter</span>
                                     </a>
                                 )}
-                                {airdrop.link_discord && (
+                                {airdrop.discord && (
                                     <a
-                                        href={airdrop.link_discord}
+                                        href={airdrop.discord}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
@@ -228,9 +228,9 @@ export default function AirdropDetail() {
                                         <span className="font-medium">Discord</span>
                                     </a>
                                 )}
-                                {airdrop.link_telegram && (
+                                {airdrop.telegram && (
                                     <a
-                                        href={airdrop.link_telegram}
+                                        href={airdrop.telegram}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-1.5 sm:gap-2 p-3 rounded-xl card-color card-hover group"
