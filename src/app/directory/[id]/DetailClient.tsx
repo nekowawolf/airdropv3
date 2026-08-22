@@ -47,7 +47,7 @@ export default function AirdropDetail() {
             <>
                 <div className="min-h-screen body-color flex flex-col items-center justify-center text-fill-color">
                     <FallbackImage
-                        src="https://nekowawolf.github.io/cdn-images/images/2026/1784476217_nwwonee_search.webp"
+                        src="https://cdn.nekowawolf.xyz/image/2026/1787422427_nwwonee_search.webp"
                         alt="Airdrop Not Found"
                         width={160}
                         height={160}

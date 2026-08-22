@@ -41,7 +41,7 @@ export const AlphaRadar = () => {
                     <div className="absolute inset-0 bg-blue-500/5 blur-xl rounded-full" />
 
                     <img
-                        src="https://nekowawolf.github.io/cdn-images/images/2026/1768368937_logo.jpg"
+                        src="https://cdn.nekowawolf.xyz/image/2026/1787422451_logo.webp"
                         alt="Central Hub"
                         className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover relative z-10"
                     />
