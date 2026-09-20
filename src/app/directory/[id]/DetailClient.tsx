@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { FallbackImage } from '@/components/FallbackImage';
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, notFound } from 'next/navigation';
 import { fetchAirdropById } from '@/services/airdropService';
 import { Airdrop } from '@/types/airdrop';
 import { Spinner } from "@/components/ui/spinner";
@@ -42,28 +42,7 @@ export default function AirdropDetail() {
         );
     }
 
-    if (!airdrop) {
-        return (
-            <>
-                <div className="min-h-screen body-color flex flex-col items-center justify-center text-fill-color">
-                    <FallbackImage
-                        src="https://cdn.nekowawolf.xyz/image/2026/1787422427_nwwonee_search.webp"
-                        alt="Airdrop Not Found"
-                        width={160}
-                        height={160}
-                        className="mx-auto mb-2"
-                    />
-                    <h1 className="text-lg font-bold mb-6 text-fill-color/50">Airdrop Not Found</h1>
-                    <button
-                        onClick={() => router.back()}
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg font-medium text-sm text-white bg-blue-600 hover:bg-blue-500 transition-all shadow-md shadow-blue-500/20 cursor-pointer"
-                    >
-                        Back to Airdrops
-                    </button>
-                </div>
-            </>
-        );
-    }
+    if (!airdrop) return notFound();
 
     return (
         <>
