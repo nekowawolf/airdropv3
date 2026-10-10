@@ -1,4 +1,4 @@
-import { Airdrop } from '@/types/airdrop';
+import { Airdrop, AirdropSubmissionPayload } from '@/types/airdrop';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -34,6 +34,22 @@ const sortEndedByEndedAtDesc = (items: any[]) =>
             new Date(a.created_at).getTime()
         );
     });
+
+export const fetchAirdrops = async (): Promise<Airdrop[]> => {
+    try {
+        const res = await fetch(API_ENDPOINTS.airdrops);
+        if (!res.ok) throw new Error('Failed to fetch airdrops');
+
+        return extractData(await res.json()).map((item) => ({
+            ...item,
+            id: item._id || item.id,
+            type: item.status === 'ended' ? 'Ended' : item.is_paid ? 'Paid' : 'Free',
+        }));
+    } catch (error) {
+        console.error('fetchAirdrops error:', error);
+        throw error;
+    }
+};
 
 export const fetchFreeAirdrops = async (): Promise<Airdrop[]> => {
     try {
@@ -121,6 +137,23 @@ export const fetchAirdropById = async (id: string): Promise<Airdrop | null> => {
         console.error('fetchAirdropById error:', error);
         return null;
     }
+};
+
+export const submitAirdrop = async (payload: AirdropSubmissionPayload) => {
+    const response = await fetch(`${API_BASE_URL}/airdrop-submissions`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || errorData.message || 'Failed to submit airdrop');
+    }
+
+    return response.json();
 };
 
 export const fetchAirdropStats = async (): Promise<{ total: number; active: number; ended: number } | null> => {

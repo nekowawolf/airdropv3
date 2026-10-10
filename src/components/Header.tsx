@@ -134,7 +134,7 @@ export default function Header() {
                 <AiOutlineLink />
               </Link>
               <Link
-                href="https://github.com/nekowawolf/" target="_blank"
+                href="https://github.com/nekowawolf/airdropv3" target="_blank"
                 className="card-color w-9 h-9 text-fill-color rounded-full border border-color hidden sm:flex items-center justify-center hover:opacity-80"
               >
                 <FaGithub />
@@ -202,7 +202,7 @@ export default function Header() {
                 <AiOutlineLink />
               </Link>
               <Link
-                href="https://github.com/nekowawolf/" target="_blank"
+                href="https://github.com/nekowawolf/airdropv3" target="_blank"
                 className="card-color w-9 h-9 text-fill-color rounded-full border border-color flex items-center justify-center cursor-pointer"
               >
                 <FaGithub />
