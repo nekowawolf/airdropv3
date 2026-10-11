@@ -243,7 +243,9 @@ function AirdropsContentInner() {
                                                 )}
                                             </div>
                                             <h3 className="text-xl font-bold mb-1">{project.name}</h3>
-                                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">{project.task}</span>
+                                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                                                <span className="relative top-px">{project.task}</span>
+                                            </span>
                                         </Link>
                                     ))}
                                 </div>
