@@ -6,7 +6,8 @@ import { useParams, useRouter, notFound } from 'next/navigation';
 import { fetchAirdropById } from '@/services/airdropService';
 import { Airdrop } from '@/types/airdrop';
 import { Spinner } from "@/components/ui/spinner";
-import { ArrowLeft, ExternalLink, Globe, Award } from 'lucide-react';
+import { ExternalLink, Globe, Award } from 'lucide-react';
+import { FiArrowLeft } from 'react-icons/fi';
 import NwwOneeAIChat, { chatStore } from "@/components/NwwOneeAIChat";
 import { CiBookmark } from "react-icons/ci";
 
@@ -49,10 +50,11 @@ export default function AirdropDetail() {
             <div className="flex-grow pt-36 pb-12 min-h-screen body-color text-fill-color px-4 sm:px-8 font-sans flex flex-col items-center">
                 <div className="max-w-4xl w-full">
                     <button
+                        type="button"
                         onClick={() => router.back()}
-                        className="flex items-center gap-2 text-fill-color/60 hover:text-fill-color mb-8 transition-colors cursor-pointer"
+                        className="back-control mb-8"
                     >
-                        <ArrowLeft size={20} />
+                        <FiArrowLeft aria-hidden="true" />
                         Back to List
                     </button>
 
